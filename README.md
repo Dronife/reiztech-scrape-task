@@ -1,5 +1,3 @@
-**# Code review
-
 ## Task
 Develop a Laravel-Based Backend for Frontend Integration with a set of RESTful endpoints to meet the following criteria:
 * Create a Job - POST `/api/jobs` - Accept a JSON request body that includes array of URLs to scrape and HTML/CSS selectors.
@@ -29,7 +27,7 @@ Develop a Laravel-Based Backend for Frontend Integration with a set of RESTful e
     - Write `docker-compose up` if the containers were closed just this command
 4. After all the process is done loading write: `docker-compose ps -q laravel`
 5. Copy returned value. E.g. of mine: `a2f527561203d53623d3******************************************************`
-6. Now you can access the symfony container: `docker exec -it <value_from_4_step> bash`
+6. Now you can access the laravel container: `docker exec -it <value_from_4_step> bash`
 7. Run following:
     * `cp .env.example .env`
     * `composer install`

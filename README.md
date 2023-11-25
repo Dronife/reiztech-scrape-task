@@ -4,11 +4,11 @@ Develop a Laravel-Based Backend for Frontend Integration with a set of RESTful e
 * Retrieve Job by ID - GET `/api/jobs/{id}` - Return job details and scraped data from URL.
 * Delete Job by ID - DELETE `/api/jobs/{id}` - Remove job.
 
-1.  Redis Data Store:<br>
+1.  Redis Data Store ✅<br>
     `Utilize Redis as the data store to maintain job details, statuses, and scraped data.`
-2. Background Processing (Optional):
+2. Background Processing (Optional) ✅
    <br> `Implement background processing (e.g., Laravel queues) to perform web scraping tasks asynchronously.`
-3. Docker Containers (Bonus Points):
+3. Docker Containers (Bonus Points) ✅
    <br> `Optionally, set up Docker containers for the Laravel application, including necessary services like PHP, Nginx/Apache, and Redis, earning bonus points.`
 
 # How to run application

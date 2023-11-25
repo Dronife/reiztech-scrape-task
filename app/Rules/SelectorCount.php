@@ -6,7 +6,7 @@ use Illuminate\Contracts\Validation\InvokableRule;
 
 class SelectorCount implements InvokableRule
 {
-    public function __construct(readonly int $urlCount)
+    public function __construct(readonly private int $urlCount)
     {
     }
 

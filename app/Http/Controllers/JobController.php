@@ -11,4 +11,14 @@ class JobController extends BaseController
     {
         return "hello";
     }
+
+    public function get(int $jobId)
+    {
+
+    }
+
+    public function delete(int $jobId)
+    {
+
+    }
 }

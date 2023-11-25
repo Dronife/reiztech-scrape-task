@@ -20,4 +20,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::prefix('jobs')->controller(\App\Http\Controllers\JobController::class)->group(function () {
     Route::post('/', 'post');
+    Route::get('/{jobId}', 'get');
+    Route::delete('/{jobId}', 'delete');
 });

@@ -2,6 +2,7 @@
 
 namespace App\Domain\Job;
 
+use App\Exceptions\JobNotFoundException;
 use App\ModelsDto\Job;
 use App\Repositories\JobRepository;
 
@@ -16,6 +17,10 @@ class Provider
     public function getJobByIdAsJson(string $id): \stdClass
     {
         $data = $this->jobRepository->getJobById("job:$id");
+
+        if ($data === null) {
+            throw new JobNotFoundException("Job with an id $id was not found.");
+        }
 
         return $this->hydrator->hydrateFromStringToJson($data);
     }

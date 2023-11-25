@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\JobNotFoundException;
 use App\Http\Requests\JobPostRequest;
 use App\Services\Job\JobModifierService;
 use App\Services\Job\JobProviderService;
@@ -27,9 +28,14 @@ class JobController extends BaseController
         }
     }
 
-    public function get(string $jobId)
+    public function get(string $jobId): Response
     {
-         return response()->json($this->provider->getJobByIdAsJson($jobId));
+        try{
+            return response()->json($this->provider->getJobByIdAsJson($jobId));
+        }catch(JobNotFoundException $exception){
+            return response()->json($exception->getMessage(), $exception->getCode());
+        }
+
     }
 
     public function delete(int $jobId)

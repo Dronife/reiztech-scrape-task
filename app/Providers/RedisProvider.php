@@ -18,7 +18,7 @@ class RedisProvider
         Redis::set($key, $data);
     }
 
-    public function getByKey($key): string
+    public function getByKey($key): ?string
     {
         return Redis::get($key);
     }

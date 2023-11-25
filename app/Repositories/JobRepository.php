@@ -21,7 +21,7 @@ class JobRepository
         }
     }
 
-    public function getJobById(string $key): string
+    public function getJobById(string $key): ?string
     {
         return $this->redisProvider->getByKey($key);
     }

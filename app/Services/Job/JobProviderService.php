@@ -3,6 +3,7 @@
 namespace App\Services\Job;
 
 use App\Domain\Job\Provider;
+use App\Exceptions\JobNotFoundException;
 
 class JobProviderService
 {
@@ -10,6 +11,9 @@ class JobProviderService
     {
     }
 
+    /**
+     * @throws JobNotFoundException
+     */
     public function getJobByIdAsJson(string $id): \stdClass
     {
         return $this->provider->getJobByIdAsJson($id);

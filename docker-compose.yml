@@ -23,6 +23,7 @@ services:
       - REDIS_PORT=6379
       - REDIS_PREFIX=reiz_laravel
       - CACHE_DRIVER=redis
+      - QUEUE_CONNECTION=redis
     depends_on:
       - redis
 

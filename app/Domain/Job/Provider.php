@@ -3,7 +3,6 @@
 namespace App\Domain\Job;
 
 use App\Exceptions\JobNotFoundException;
-use App\ModelsDto\Job;
 use App\Repositories\JobRepository;
 
 class Provider

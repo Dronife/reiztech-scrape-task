@@ -3,6 +3,7 @@
 namespace App\Services\Job;
 
 use App\Domain\Job\Modifier;
+use App\Exceptions\UnableToUpdateException;
 use Predis\Response\ServerException;
 
 class JobModifierService
@@ -23,5 +24,15 @@ class JobModifierService
     public function delete(string $id): bool
     {
        return $this->modifier->delete($id);
+    }
+
+    /**
+     * @throws \JsonException
+     * @throws ServerException
+     * @throws UnableToUpdateException
+     */
+    public function update(array $data, array $context): void
+    {
+        $this->modifier->update($data, $context);
     }
 }

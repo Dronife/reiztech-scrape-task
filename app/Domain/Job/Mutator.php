@@ -3,6 +3,7 @@
 namespace App\Domain\Job;
 
 use App\Enums\JobStatus;
+use App\Jobs\ProcessJob;
 use App\Repositories\JobRepository;
 use Predis\Response\ServerException;
 
@@ -26,10 +27,25 @@ class Mutator
         $jobDataAsString = $this->hydrator->hydrateFromArrayToString($data);
 
         $this->jobRepository->createJob($context['key'], $jobDataAsString);
+
+        ProcessJob::dispatch($data)->delay(now()->addSeconds(15));
     }
 
     public function delete(string $key): bool
     {
        return $this->jobRepository->deleteByKey($key);
+    }
+
+    /**
+     * @throws ServerException
+     * @throws \JsonException
+     */
+    public function update(array $data, array $context): void
+    {
+        $data['status'] = $context['status'];
+
+        $jobDataAsString = $this->hydrator->hydrateFromArrayToString($data);
+
+        $this->jobRepository->createJob($context['key'], $jobDataAsString);
     }
 }

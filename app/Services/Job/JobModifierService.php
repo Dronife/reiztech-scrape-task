@@ -13,6 +13,7 @@ class JobModifierService
 
     /**
      * @throws ServerException
+     * @throws \JsonException
      */
     public function create(array $data): string
     {

@@ -23,7 +23,7 @@ class JobController extends BaseController
         try {
             return response()->json(['jobId' => $this->modifier->create($request->all())], Response::HTTP_OK);
         }
-        catch(ServerException $exception) {
+        catch(ServerException|\JsonException $exception) {
             return response()->json($exception->getMessage(), Response::HTTP_BAD_REQUEST);
         }
     }

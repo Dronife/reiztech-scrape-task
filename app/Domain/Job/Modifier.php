@@ -13,6 +13,7 @@ class Modifier
 
     /**
      * @throws ServerException
+     * @throws \JsonException
      */
     public function create(array $data): string
     {

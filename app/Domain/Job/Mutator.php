@@ -4,6 +4,7 @@ namespace App\Domain\Job;
 
 use App\Enums\JobStatus;
 use App\Repositories\JobRepository;
+use Predis\Response\ServerException;
 
 class Mutator
 {
@@ -13,6 +14,10 @@ class Mutator
     ) {
     }
 
+    /**
+     * @throws ServerException
+     * @throws \JsonException
+     */
     public function create(array $data, array $context): void
     {
         $data['id'] = $context['jobId'];

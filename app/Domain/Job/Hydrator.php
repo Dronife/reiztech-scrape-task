@@ -14,15 +14,22 @@ class Hydrator
         }
 
         return (new Job())
-            ->setId($data['id'] ?? '')
+            ->setId($data['id'])
             ->setUrls($data['urls'])
             ->setSelectors($data['selectors'])
             ->setStatus(JobStatus::from($data['status']));
     }
 
+    /**
+     * @throws \JsonException
+     */
     public function hydrateFromArrayToString(array $data)
     {
-        return json_encode($data);
+        try {
+            return json_encode($data);
+        }catch(\JsonException $exception){
+            throw new \JsonException($exception->getMessage());
+        }
     }
 
     public function hydrateFromStringToModel(string $data): Job

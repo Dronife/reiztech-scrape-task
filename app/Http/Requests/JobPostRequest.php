@@ -1,11 +1,10 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Http\Requests;
 
 use App\Rules\SelectorCount;
 use App\Rules\UrlAddress;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Validator;
 
 class JobPostRequest extends FormRequest
 {

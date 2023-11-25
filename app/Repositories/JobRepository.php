@@ -25,4 +25,9 @@ class JobRepository
     {
         return $this->redisProvider->getByKey($key);
     }
+
+    public function deleteByKey(string $key): bool
+    {
+        return $this->redisProvider->deleteByKey($key);
+    }
 }

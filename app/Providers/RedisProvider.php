@@ -22,4 +22,9 @@ class RedisProvider
     {
         return Redis::get($key);
     }
+
+    public function deleteByKey($key): bool
+    {
+        return (bool) Redis::del($key);
+    }
 }

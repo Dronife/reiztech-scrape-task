@@ -19,4 +19,9 @@ class JobModifierService
     {
         return $this->modifier->create($data);
     }
+
+    public function delete(string $id): bool
+    {
+       return $this->modifier->delete($id);
+    }
 }

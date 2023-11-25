@@ -18,9 +18,16 @@ class Modifier
     public function create(array $data): string
     {
         $jobId = uniqid();
-        $key = sprintf('job:%s', $jobId);
+        $key = "job:$jobId";
         $this->mutator->create($data, ['jobId' => $jobId, 'key' => $key]);
 
         return $jobId;
+    }
+
+    public function delete(string $id): bool
+    {
+        $key = "job:$id";
+
+        return $this->mutator->delete($key);
     }
 }

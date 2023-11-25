@@ -27,4 +27,9 @@ class Mutator
 
         $this->jobRepository->createJob($context['key'], $jobDataAsString);
     }
+
+    public function delete(string $key): bool
+    {
+       return $this->jobRepository->deleteByKey($key);
+    }
 }

@@ -38,8 +38,12 @@ class JobController extends BaseController
 
     }
 
-    public function delete(int $jobId)
+    public function delete(string $jobId): Response
     {
+        if ($this->modifier->delete($jobId)) {
+            return response()->json("Successfully deleted", Response::HTTP_OK);
+        }
 
+        return response()->json("Item was not deleted", Response::HTTP_BAD_REQUEST);
     }
 }

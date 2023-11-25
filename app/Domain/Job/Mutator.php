@@ -43,6 +43,7 @@ class Mutator
     public function update(array $data, array $context): void
     {
         $data['status'] = $context['status'];
+        $data['data'] = $context['data'];
 
         $jobDataAsString = $this->hydrator->hydrateFromArrayToString($data);
 

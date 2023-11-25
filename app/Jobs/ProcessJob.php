@@ -22,8 +22,20 @@ class ProcessJob implements ShouldQueue
     public function handle(JobModifierService $jobModifierService): void
     {
         echo("Starting to process job\n");
+
+        $scrapedData = [];
+        foreach($this->data['urls'] as $index => $url)
+        {
+            $scrapedData []= [
+                $url => "<div>$index</div>"
+            ];
+        }
+
         try {
-            $jobModifierService->update($this->data, ['status' => JobStatus::COMPLETED->value]);
+            $jobModifierService->update($this->data, [
+                'status' => JobStatus::COMPLETED->value,
+                'data' => $scrapedData,
+            ]);
             echo("Job has been processed\n");
         } catch (UnableToUpdateException $exception) {
             echo($exception->getMessage());
